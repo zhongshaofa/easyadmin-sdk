@@ -2,15 +2,21 @@
 
 namespace MockApp\controller;
 
-use IamTool\annotations\NodeAnnotation;
+use EasyAdmin\annotation\ControllerAnnotation;
+use EasyAdmin\annotation\NodeAnotation;
 use MockApp\BaseController;
 
 
+/**
+ * Class TestController
+ * @package MockApp\controller
+ * @ControllerAnnotation(title="测试管理")
+ */
 class TestController extends BaseController
 {
 
     /**
-     * @NodeAnnotation(cateTitle="测试管理",title="测试列表",route="test/index",method="POST")
+     * @NodeAnotation(title="列表")
      */
     public function index()
     {
@@ -18,7 +24,7 @@ class TestController extends BaseController
     }
 
     /**
-     * @NodeAnnotation(cateTitle="测试管理",title="测试详情",route="test/details",method="GET")
+     * @NodeAnotation(title="详情")
      */
     public function details()
     {

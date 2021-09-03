@@ -2,15 +2,21 @@
 
 namespace MockApp\controller;
 
-use IamTool\annotations\NodeAnnotation;
 use MockApp\BaseController;
+use EasyAdmin\annotation\ControllerAnnotation;
+use EasyAdmin\annotation\NodeAnotation;
 
 
+/**
+ * Class GoodsController
+ * @package MockApp\controller
+ * @ControllerAnnotation(title="管理员管理")
+ */
 class GoodsController extends BaseController
 {
 
     /**
-     * @NodeAnnotation(cateTitle="商品管理",title="商品列表",route="goods/index",method="GET")
+     * @NodeAnotation(title="列表")
      */
     public function index()
     {
@@ -18,7 +24,7 @@ class GoodsController extends BaseController
     }
 
     /**
-     * @NodeAnnotation(cateTitle="商品管理",title="商品编辑",route="goods/edit",method="POST",authType=3)
+     * @NodeAnotation(title="修改")
      */
     public function edit()
     {
@@ -26,7 +32,7 @@ class GoodsController extends BaseController
     }
 
     /**
-     * @NodeAnnotation(cateTitle="商品管理",title="商品详情",route="goods/detail",method="GET",ruleType=2)
+     * @NodeAnotation(title="详情")
      */
     public function detail()
     {
@@ -34,7 +40,7 @@ class GoodsController extends BaseController
     }
 
     /**
-     * @NodeAnnotation(cateTitle="商品管理",title="商品添加",route="goods/add",method="POST")
+     * @NodeAnotation(title="新增")
      */
     public function add()
     {

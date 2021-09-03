@@ -3,14 +3,20 @@
 namespace MockApp\controllerV2;
 
 
-use IamTool\annotations\NodeAnnotation;
+use EasyAdmin\annotation\ControllerAnnotation;
+use EasyAdmin\annotation\NodeAnotation;
 use MockApp\BaseController;
 
+/**
+ * Class CateController
+ * @package MockApp\controller
+ * @ControllerAnnotation(title="分类管理")
+ */
 class CateController extends BaseController
 {
 
     /**
-     * @NodeAnnotation(cateTitle="分类管理",title="分类列表",route="cate/index",method="GET")
+     * @NodeAnotation(title="列表")
      */
     public function index()
     {
@@ -18,15 +24,7 @@ class CateController extends BaseController
     }
 
     /**
-     * @NodeAnnotation(cateTitle="分类管理",title="新增分类",route="cate/add",method="POST")
-     */
-    public function add()
-    {
-        var_dump(__METHOD__);
-    }
-
-    /**
-     * @NodeAnnotation(cateTitle="分类管理",title="编辑分类",route="cate/edit",method="POST")
+     * @NodeAnotation(title="修改")
      */
     public function edit()
     {
@@ -34,9 +32,17 @@ class CateController extends BaseController
     }
 
     /**
-     * @NodeAnnotation(cateTitle="分类管理",title="分类详情",route="cate/detail",method="GET")
+     * @NodeAnotation(title="详情")
      */
     public function detail()
+    {
+        var_dump(__METHOD__);
+    }
+
+    /**
+     * @NodeAnotation(title="新增")
+     */
+    public function add()
     {
         var_dump(__METHOD__);
     }
