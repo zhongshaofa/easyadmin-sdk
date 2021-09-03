@@ -1,6 +1,6 @@
 {
     "name": "zhongshaofa/easy-admin",
-    "description": "EasyAdmin工具",
+    "description": "EasyAdmin工具，https://github.com/zhongshaofa/easyadmin-sdk",
     "type": "library",
     "license": "MIT",
     "authors": [
