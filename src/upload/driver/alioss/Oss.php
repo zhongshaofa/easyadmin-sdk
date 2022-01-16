@@ -40,7 +40,11 @@ class Oss implements OssDriver
         $this->endpoint = $config['alioss_endpoint'];
         $this->bucket = $config['alioss_bucket'];
         $this->domain = $config['alioss_domain'];
-        $this->ossClient = new OssClient($this->accessKeyId, $this->accessKeySecret, $this->endpoint);
+        if($this->domain){
+            $this->ossClient = new OssClient($this->accessKeyId, $this->accessKeySecret, $this->domain,true);
+        } else {
+            $this->ossClient = new OssClient($this->accessKeyId, $this->accessKeySecret, $this->endpoint);
+        }
         return $this;
     }
 
