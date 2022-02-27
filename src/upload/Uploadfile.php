@@ -57,6 +57,12 @@ class Uploadfile
     protected $tableName = 'system_uploadfile';
 
     /**
+     * 保存的其他参数
+     * @var array
+     */
+    protected $saveExtra = [];
+
+    /**
      * 获取对象实例
      * @return Uploadfile|object
      */
@@ -113,6 +119,17 @@ class Uploadfile
     }
 
     /**
+     * 设置其他保存参数
+     * @param array $extra
+     * @return $this
+     */
+    public function setSaveExtra(array $extra = []): Uploadfile
+    {
+        $this->saveExtra = $extra;
+        return $this;
+    }
+
+    /**
      * 保存文件
      * @return array|void
      */
@@ -132,6 +149,7 @@ class Uploadfile
             ->setUploadType($this->uploadType)
             ->setTableName($this->tableName)
             ->setFile($this->file)
+            ->setSaveExtra($this->saveExtra)
             ->save();
         return $save;
     }
