@@ -61,6 +61,12 @@ class FileBase
     protected $uploadType = 'local';
 
     /**
+     * 保存的其他参数
+     * @var array
+     */
+    protected $saveExtra = [];
+
+    /**
      * 设置上传方式
      * @param $value
      * @return $this
@@ -101,6 +107,17 @@ class FileBase
     public function setTableName($value)
     {
         $this->tableName = $value;
+        return $this;
+    }
+
+    /**
+     * 设置保存其他参数
+     * @param array $extra
+     * @return $this
+     */
+    public function setSaveExtra(array $extra = []): FileBase
+    {
+        $this->saveExtra = $extra;
         return $this;
     }
 

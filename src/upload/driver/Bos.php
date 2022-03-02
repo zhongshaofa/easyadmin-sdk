@@ -1,29 +1,13 @@
 <?php
-
-// +----------------------------------------------------------------------
-// | EasyAdmin
-// +----------------------------------------------------------------------
-// | PHP交流群: 763822524
-// +----------------------------------------------------------------------
-// | 开源协议  https://mit-license.org 
-// +----------------------------------------------------------------------
-// | github开源项目：https://github.com/zhongshaofa/EasyAdmin
-// +----------------------------------------------------------------------
+declare(strict_types=1);
 
 namespace EasyAdmin\upload\driver;
 
 use EasyAdmin\upload\FileBase;
-use EasyAdmin\upload\driver\qnoss\Oss;
 use EasyAdmin\upload\trigger\SaveDb;
 
-/**
- * 七牛云上传
- * Class Qnoss
- * @package EasyAdmin\upload\driver
- */
-class Qnoss extends FileBase
+class Bos extends FileBase
 {
-
     /**
      * 重写上传方法
      * @return array|void
@@ -31,7 +15,7 @@ class Qnoss extends FileBase
     public function save()
     {
         parent::save();
-        $upload = Oss::instance($this->uploadConfig)
+        $upload = \EasyAdmin\upload\driver\bdoss\Bos::instance($this->uploadConfig)
             ->save($this->completeFilePath, $this->completeFilePath);
         if ($upload['save'] == true) {
             SaveDb::trigger($this->tableName, array_merge([
@@ -46,5 +30,4 @@ class Qnoss extends FileBase
         $this->rmLocalSave();
         return $upload;
     }
-
 }

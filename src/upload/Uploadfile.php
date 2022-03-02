@@ -13,6 +13,7 @@
 namespace EasyAdmin\upload;
 
 use EasyAdmin\upload\driver\Alioss;
+use EasyAdmin\upload\driver\Bos;
 use EasyAdmin\upload\driver\Local;
 use EasyAdmin\upload\driver\Qnoss;
 use EasyAdmin\upload\driver\Txcos;
@@ -55,6 +56,12 @@ class Uploadfile
      * @var string
      */
     protected $tableName = 'system_uploadfile';
+
+    /**
+     * 保存的其他参数
+     * @var array
+     */
+    protected $saveExtra = [];
 
     /**
      * 获取对象实例
@@ -113,6 +120,17 @@ class Uploadfile
     }
 
     /**
+     * 设置其他保存参数
+     * @param array $extra
+     * @return $this
+     */
+    public function setSaveExtra(array $extra = []): Uploadfile
+    {
+        $this->saveExtra = $extra;
+        return $this;
+    }
+
+    /**
      * 保存文件
      * @return array|void
      */
@@ -127,11 +145,14 @@ class Uploadfile
             $obj = new Qnoss();
         } elseif ($this->uploadType == 'txcos') {
             $obj = new Txcos();
+        }elseif ($this->uploadType == 'bos') {
+            $obj = new Bos();
         }
         $save = $obj->setUploadConfig($this->uploadConfig)
             ->setUploadType($this->uploadType)
             ->setTableName($this->tableName)
             ->setFile($this->file)
+            ->setSaveExtra($this->saveExtra)
             ->save();
         return $save;
     }
